@@ -1,0 +1,6 @@
+#以让利降序方式排列成交数据
+select * from product_transfer_list where doneDate<>"" order by reduceDays desc
+#查看让利数据
+select * from product_transfer_list where doneDate="" order by reduceDays desc
+#查看当日成交
+select count(*) from product_transfer_list where doneDate<>"" and doneDate>"2014-10-15 00:00"  order by reduceDays desc
