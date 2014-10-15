@@ -13,6 +13,7 @@ import urllib
 import simplejson  # for translation of str and dict
 import sqlite3    # for database
 import os
+import win32file
 
 def str_current_time():
         current_time=time.time()*1000
@@ -102,8 +103,15 @@ while True:
     cursor.close()
     conn.commit()
     conn.close()
+
+    filepath=os.getcwd()+"\\result\\lufax.db"
+    targetfilepath=os.getcwd()+"\\result\\lufax"+str_current_time()+".db"
+    win32file.CopyFile(filepath,targetfilepath,1)
+    print "copy a db to review."
+    
     print iso_current_time(),'please wait 5 minutes'
 
+        
     time.sleep(300)
 
 
